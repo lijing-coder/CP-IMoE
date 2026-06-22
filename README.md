@@ -1,5 +1,14 @@
-# CP-IMoE
+# CP-IMoE: Collaborative Prompt-Guided Interactive Mixture-of-Experts for Incomplete Multimodal Learning
 
 Official implementation of CP-IMoE: Collaborative Prompt-Guided Interactive Mixture-of-Experts for Incomplete Multimodal Learning.
 
-CP-IMoE is designed for robust multimodal medical image diagnosis under incomplete-modality scenarios. It explicitly models modality-specific, redundant, and synergistic information, and introduces a collaborative prompt-guided routing mechanism to adaptively select reliable experts when one or more modalities are missing.
+Citation
+
+If you find this repository useful for your research, please consider citing our paper:
+
+@inproceedings{li2026cpimoe,
+  title={CP-IMoE: Collaborative Prompt-Guided Interactive Mixture-of-Experts for Incomplete Multimodal Learning},
+  author={Li, Jing and others},
+  booktitle={CVPR Findings},
+  year={2026}
+}
