@@ -174,7 +174,7 @@ class Base_Model(nn.Module):
             for param in net.parameters():
                 param.requires_grad = False
 
-        #类别prompt（不需训练）
+        #类别prompt
         self.complete_prompt = torch.zeros(2048).cuda()  # 初始全 0
         self.missing_fundus_prompt = torch.ones(2048).cuda()  # 初始全 1
         self.missing_oct_prompt = torch.full((2048,), 2.0).cuda()  # 初始全 2
