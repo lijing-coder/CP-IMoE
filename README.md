@@ -1,6 +1,6 @@
 # CP-IMoE
 
-> **[Collaborative Prompt-Guided Interactive Mixture-of-Experts for Incomplete Multimodal Learning](https://openaccess.thecvf.com/content/CVPR2026F/papers/Li_CP-IMoE_Collaborative_Prompt-Guided_Interactive_Mixture-of-Experts_for_Incomplete_Multimodal_Learning_CVPRF_2026_paper.pdf))**
+> **[Collaborative Prompt-Guided Interactive Mixture-of-Experts for Incomplete Multimodal Learning](https://openaccess.thecvf.com/content/CVPR2026F/papers/Li_CP-IMoE_Collaborative_Prompt-Guided_Interactive_Mixture-of-Experts_for_Incomplete_Multimodal_Learning_CVPRF_2026_paper.pdf) [Click this link to find the paper]**
 
 CP-IMoE is a PyTorch implementation for learning from *incomplete* paired multimodal data. It first learns experts that describe modality-specific, redundant, and synergistic information, then freezes those experts and uses collaborative prompts plus a router to adaptively combine them when one modality is unavailable.
 
