@@ -53,38 +53,18 @@ def train(net,train_dataloader,model_name):
         
         # Diagostic label
         diagnosis_label = label[0].long().cuda()
-        # Seven-Point Checklikst labels
-#         pn_label = label[1].long().cuda()
-#         str_label = label[2].long().cuda()
-#         pig_label = label[3].long().cuda()
-#         rs_label = label[4].long().cuda()
-#         dag_label = label[5].long().cuda()
-#         bwv_label = label[6].long().cuda()
-#         vs_label = label[7].long().cuda()
 
         #print()
         logit_diagnosis_fusion,loss_together = net(clinic_image,derm_image)
         #print(logit_diagnosis_fusion.shape)
         
         loss_fusion = criterion(logit_diagnosis_fusion, diagnosis_label)           
-        #loss_clic = net.criterion(logit_diagnosis_clic, diagnosis_label)
-        #loss_derm = net.criterion(logit_diagnosis_derm, diagnosis_label)
         loss = loss_fusion+loss_together
 
         dia_acc_fusion = torch.true_divide(metric(logit_diagnosis_fusion, diagnosis_label), clinic_image.size(0))
-        #dia_acc_clic = torch.true_divide(net.metric(logit_diagnosis_clic, diagnosis_label), clinic_image.size(0))
-        #dia_acc_derm = torch.true_divide(net.metric(logit_diagnosis_derm, diagnosis_label), clinic_image.size(0))
 
         dia_acc = dia_acc_fusion
-        #dia_acc = torch.true_divide(dia_acc_fusion + dia_acc_clic + dia_acc_derm, 3)
-
-#         sps_acc_fusion = net.metric(logit_pn_fusion, pn_label)
-#         sps_acc_clic = net.metric(logit_pn_clic, pn_label)
-#         sps_acc_derm = net.metric(logit_pn_derm, pn_label)
-
-#         sps_acc = torch.true_divide(sps_acc_fusion + sps_acc_clic + sps_acc_derm, 3)
-
-
+        
         loss.backward()
         opt.step()
 
@@ -118,14 +98,6 @@ def validation(net,val_dataloader,model_name, epoch):
 #         meta_data    = meta_data.cuda()
 
         diagnosis_label = label[0].long().cuda()
-#         pn_label = label[1].long().cuda()
-#         str_label = label[2].long().cuda()
-#         pig_label = label[3].long().cuda()
-#         rs_label = label[4].long().cuda()
-#         dag_label = label[5].long().cuda()
-#         bwv_label = label[6].long().cuda()
-#         vs_label = label[7].long().cuda()
-
         with torch.no_grad():
           
           
@@ -147,30 +119,7 @@ def validation(net,val_dataloader,model_name, epoch):
             all_preds.extend(preds.cpu().numpy())
             all_labels.extend(diagnosis_label.cpu().numpy())
             all_probs.extend(probs.cpu().numpy())
-            # all_features.extend(features.cpu().numpy())
-            
-            
-            #for k, v in batch_intermediate.items():
-                #intermediate_features[k].append(v.cpu().numpy())
-            #for k, v in batch_attention.items():
-                #attention_maps[k].append(v.cpu().numpy())
-
-
-          #logit_diagnosis_fusion = net(clinic_image,derm_image)
   
-          #loss_fusion = criterion(logit_diagnosis_fusion, diagnosis_label)           
-          #loss_clic = net.criterion(logit_diagnosis_clic, diagnosis_label)
-          #loss_derm = net.criterion(logit_diagnosis_derm, diagnosis_label)
-          #loss = loss_fusion
-  
-          #dia_acc_fusion = torch.true_divide(metric(logit_diagnosis_fusion, diagnosis_label), clinic_image.size(0))
-          #dia_acc_clic = torch.true_divide(net.metric(logit_diagnosis_clic, diagnosis_label), clinic_image.size(0))
-          #dia_acc_derm = torch.true_divide(net.metric(logit_diagnosis_derm, diagnosis_label), clinic_image.size(0))
-  
-          #dia_acc = dia_acc_fusion
-          #dia_acc = torch.true_divide(dia_acc_fusion + dia_acc_clic + dia_acc_derm, 3)
-  
-
         val_loss += loss.item()
         val_dia_acc += acc.item()
 #         vaL_sps_acc += sps_acc.item()
