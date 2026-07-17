@@ -2,7 +2,7 @@ import os
 os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 from dataloader_SPC import generate_dataloader
 from utils_SPC import Logger, adjust_learning_rate, CraateLogger,create_cosine_learing_schdule,encode_test_label,set_seed
-from model.Two_modality_pretraining_Synergistic import Base_Model
+from model.Synergistic_pretrain import Base_Model
 from dependency_SPC import *
 from torch import optim
 from torchcontrib.optim import SWA
