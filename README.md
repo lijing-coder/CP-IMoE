@@ -4,8 +4,6 @@
 
 CP-IMoE is a PyTorch implementation for learning from *incomplete* paired multimodal data. It first learns experts that describe modality-specific, redundant, and synergistic information, then freezes those experts and uses collaborative prompts plus a router to adaptively combine them when one modality is unavailable.
 
-The code in this snapshot is configured for paired retinal fundus and OCT inputs, but the design is applicable to other two-modality classification problems after adapting the dataset loader and checkpoint paths.
-
 ## Overview
 
 Incomplete multimodal data can contain either both modalities or only one. A fixed fusion rule may over-rely on a missing or uninformative source. CP-IMoE separates the representation into four complementary expert views:
